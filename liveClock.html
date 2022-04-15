@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Clock</title>
+    <style>
+    
+        body {
+            background: url("./background.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            color: rgb(255, 255, 255);
+            
+        }
+
+        div#liveClock {
+            margin: auto;
+            margin-top: 12.50rem;
+            display: flex; 
+            justify-content: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 12.50rem;
+            border: 0.125rem dashed #f5f5f5;
+            border-radius: 30%;
+            width: 60%;    
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="liveClock"></div>
+
+    <script>
+    
+    function liveClock() {
+        let date = new Date();
+        let hrs = date.getHours(), 
+            min = date.getMinutes(), 
+            sec = date.getSeconds();
+    
+        hrs = updateClock(hrs);
+        min = updateClock(min);
+        sec = updateClock(sec);
+
+        document.getElementById('liveClock').innerHTML = hrs + ':' + min + ':' + sec;
+
+        let y = setTimeout(function() { liveClock() });
+    }
+    
+    function updateClock(x) {
+        if (x < 10) {
+            return '0' + x;
+        }
+        else {
+            return x;
+        }
+    }
+    
+    liveClock();
+
+    </script>
+    
+</body>
+
+</html>
